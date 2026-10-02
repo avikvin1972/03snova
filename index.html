@@ -159,7 +159,7 @@ $('sel').innerHTML=SND.map(s=>'<option value="'+esc(s)+'">'+esc(s)+'</option>').
 
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 
-const TAB_NAMES=['Форма','Спектр 128','Спектр 32','Спектрограмма 128','Спектрограмма 32','F0 (основной тон)','Громкость'];
+const TAB_NAMES=['Форма','спектр 128','спектр 32','спектрограмма 128','спектрограмма 32','F0 (основной тон)','Громкость'];
 TAB_NAMES.forEach((t,i)=>{
  const b=document.createElement('button');b.textContent=t;if(!i)b.className='on';
  b.onclick=()=>{tab=i;[...$('tabs').children].forEach((c,j)=>c.classList.toggle('on',j===i));
@@ -669,7 +669,7 @@ function drawSG(g,x,sr,Y,H,windowMs){
 function draw(){
  if(!S)return;
  const cv=$('cg'),g=cv.getContext('2d'),W=cv.width;
- const x=seg(),C=css('--acc'),Q=css('--ref'),fg=css('--fg');
+ const x=((tab>=1&&tab<=4)?S.d:seg()),C=css('--acc'),Q=css('--ref'),fg=css('--fg');
  const r=cmp&&R?R:null;
  const spectrumTab=(tab===1||tab===2);
  const sgTab=(tab===3||tab===4);
